@@ -18,6 +18,7 @@ After reading the diff, do the following:
 
 Strongly prefer to restrict your use of git commands to these when getting the diff or determining which files were added/changed/removed:
 
+```xml
 <referenceCommands>
   <command>
     <description>committed changes on my branch since diverging from the upstream default branch</description>
@@ -46,18 +47,22 @@ Strongly prefer to restrict your use of git commands to these when getting the d
   </command>
   <command>
     <description>scope diff to a specific path since diverging from upstream</description>
-    <bash>git diff --merge-base origin/HEAD &lt;ref-or-empty&gt; -- &lt;pathspec&gt;</bash>
+    <bash>git diff --merge-base origin/HEAD <ref-or-empty> -- <pathspec></bash>
   </command>
 </referenceCommands>
+```
 
 Avoid commands in this format, unless explicitly asked for:
 
+```xml
 <avoidCommands>
-  <avoidCommand>git diff &lt;base-ref&gt; &lt;head-ref&gt;</avoidCommand>
-  <avoidCommand>git diff &lt;base-ref&gt;..&lt;head-ref&gt;</avoidCommand>
+  <avoidCommand>git diff <base-ref> <head-ref></avoidCommand>
+  <avoidCommand>git diff <base-ref>..<head-ref></avoidCommand>
   <avoidCommand>git diff HEAD...origin/HEAD</avoidCommand>
 </avoidCommands>
+```
 
+```xml
 <guidelines>
 - Persistence: Low. Do not retry failed tool calls more than 2 times. If a tool call fails twice, move on.
 - Remember to look at untracked added files.
@@ -68,6 +73,7 @@ Avoid commands in this format, unless explicitly asked for:
 - If a diff is unexpectedly large, double check you are using the right refs in git invocations.
 - If the diff has more than 100 changed files or is more than 10,000 lines long, abort the review and emit a single critical issue stating the diff is too large.
 </guidelines>
+```
 
 ## Output
 
